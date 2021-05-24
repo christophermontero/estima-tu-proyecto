@@ -1,4 +1,4 @@
-<h1 align="center"> Estima tu Proyecto</h1>
+# Estima tu Proyecto
 
 ![](https://img.shields.io/github/issues/christophermontero/estima-tu-proyecto)
 ![](https://img.shields.io/github/issues-pr-closed/christophermontero/estima-tu-proyecto)
@@ -66,7 +66,7 @@ Descripción de los recursos externos que generan una dependencia para la reutil
 ## Cómo contribuir
 Los issues abiertos, los errores y las solicitudes de funciones se enumeran en la pestaña de _Issues_ y se etiquetan en consecuencia.
 
-Vea el archivo CONTRIBUTING.md para conocer la guía de estilo, la estructura de carpetas y cómo contribuir.
+Vea el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para conocer la guía de estilo y cómo contribuir.
 
 ## Autores
 - [Christopher Ortiz Montero](https://github.com/christophermontero)
