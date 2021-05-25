@@ -70,6 +70,21 @@ Vea el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para conocer la guía de estil
 
 ## Autores
 - [Christopher Ortiz Montero](https://github.com/christophermontero)
+- [Alvaro Varón](https://github.com/alxvaron)
+- [Carlos Andres Uriza](https://github.com/caurizaf)
+- [Christian Camilo Lopez](https://github.com/cclopezp)
+- [Carlos Andres Bautista](https://github.com/darkclassiccarlos)
+- [David Guillermo Galvis](https://github.com/davidggalvises)
+- [Edwar Arturo Rodriguez](https://github.com/edwarod)
+- [Fabio Andres Bombiela](https://github.com/fbombi13)
+- [Joaquin Caicedo Navarro](https://github.com/joaquincaicedonavarro)
+- [Jonathan Steven Capera](https://github.com/JocoolQ)
+- [José Cañón](https://github.com/jscanon)
+- [Daniel David Leal](https://github.com/lealdaniel00)
+- [Sabrina Suarez Arrieta](https://github.com/sabrinasuarezarrieta)
+- [Sebastian Camilo Vanegas](https://github.com/SCVA)
+- [William Carpeta](https://github.com/wakoagui)
+- [Alejandro Daza](https://github.com/apdaza)
 
 ## Licencia
 Este proyecto es de código abierto y está disponible bajo la [Licencia MIT](http://opensource.org/licenses/mit-license.php).
