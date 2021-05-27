@@ -1,23 +1,6 @@
-Feature: Como usuario regular quiero eliminar una función asociada a un módulo para depurar o refactorizar funciones
+Feature: Aplicacion
 
-  Scenario: Crear un objeto
-    Given we have behave installed
-    When we implement a test
-    Then behave will test it for us!
-
-  Scenario: Borrar un objeto
-    Given we have behave installed
-    When we implement a test
-    Then behave will test it for us!
-
-  Scenario Outline: ajiaco un objeto
-    Given we have behave installed <x>
-    When we implement a test
-    Then behave will test it for us!
-
-    Examples: valores
-      | x |
-      | 1 |
-      | 2 |
-      | 3 |
-      | 4 |
+  Scenario: Como usuario regular quiero crear un proyecto para manejar el proceso de estimación
+    Given esta la aplicacion arriba
+    When envio una peticion a la siguiente url "dummy_url"
+    Then el sistema almacenara un nuevo proyecto

@@ -1,17 +1,17 @@
 from behave import *
 
-@given('we have behave installed')
+@given('esta la aplicacion arriba')
 def step_impl(context):
     pass
 
-@given('we have behave installed {x}')
-def step_impl(context, x):
-    print(x)
-
-@when('we implement a test')
+@given('voy vender bonice')
 def step_impl(context):
-    assert True is not False
+    pass
 
-@then('behave will test it for us!')
+@when('envio una peticion a la siguiente url {url}')
+def step_impl(context, url):
+    print(url)
+
+@then('el sistema almacenara un nuevo proyecto')
 def step_impl(context):
     assert context.failed is False
