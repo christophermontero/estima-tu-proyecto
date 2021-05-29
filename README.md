@@ -15,6 +15,7 @@
   - [Guía de usuario](#guía-de-usuario)
   - [Guía de instalación](#guía-de-instalación)
     - [Dependencias](#dependencias)
+  - [Requerimientos](#requerimientos)
   - [Cómo contribuir](#cómo-contribuir)
   - [Autores](#autores)
   - [Licencia](#licencia)
@@ -69,10 +70,21 @@ Descripción de los recursos externos que generan una dependencia para la reutil
 
     Puedes usar este estilo de letra diferenciar los comandos de instalación.
 
+## Requerimientos
+
+Para instalar los requerimientos utilice el siguiente comando:
+
+```
+pip install -r requirements.txt
+```
+
+
 ## Cómo contribuir
 Los issues abiertos, los errores y las solicitudes de funciones se enumeran en la pestaña de _Issues_ y se etiquetan en consecuencia.
 
 Vea el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para conocer la guía de estilo y cómo contribuir.
+
+
 
 ## Autores
 - [Christopher Ortiz Montero](https://github.com/christophermontero)
