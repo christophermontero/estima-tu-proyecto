@@ -23,8 +23,14 @@ Para las pruebas de aceptacion se va a utilizar:
 
 Para la ejecucion de pruebas de manera sencilla se hace a partir del siguiente comando:
 
+### Behave
 ``` cmd
 <BASE_PATH>/pruebas> behave
+```
+
+### Pytest
+``` cmd
+<BASE_PATH>/pruebas> pytest
 ```
 
 
