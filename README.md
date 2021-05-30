@@ -6,12 +6,19 @@
 
 ## Tabla de contenidos:
 
-- [Descripción del proyecto](#descripción-del-proyecto)
-- [Guía de usuario](#guía-de-usuario)
-- [Guía de instalación](#guía-de-instalación)
-- [Cómo contribuir](#cómo-contribuir)
-- [Autores](#autores)
-- [Licencia](#licencia)
+- [Estima tu Proyecto](#estima-tu-proyecto)
+  - [Tabla de contenidos:](#tabla-de-contenidos)
+  - [Descripción del proyecto](#descripción-del-proyecto)
+    - [Primera iteración](#primera-iteración)
+    - [Endpoints del API](#endpoints-del-api)
+    - [Modelos de datos](#modelos-de-datos)
+  - [Guía de usuario](#guía-de-usuario)
+  - [Guía de instalación](#guía-de-instalación)
+    - [Dependencias](#dependencias)
+  - [Requerimientos](#requerimientos)
+  - [Cómo contribuir](#cómo-contribuir)
+  - [Autores](#autores)
+  - [Licencia](#licencia)
 
 
 ## Descripción del proyecto
@@ -63,10 +70,21 @@ Descripción de los recursos externos que generan una dependencia para la reutil
 
     Puedes usar este estilo de letra diferenciar los comandos de instalación.
 
+## Requerimientos
+
+Para instalar los requerimientos utilice el siguiente comando:
+
+```
+pip install -r requirements.txt
+```
+
+
 ## Cómo contribuir
 Los issues abiertos, los errores y las solicitudes de funciones se enumeran en la pestaña de _Issues_ y se etiquetan en consecuencia.
 
 Vea el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para conocer la guía de estilo y cómo contribuir.
+
+
 
 ## Autores
 - [Christopher Ortiz Montero](https://github.com/christophermontero)
@@ -79,7 +97,7 @@ Vea el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para conocer la guía de estil
 - [Fabio Andres Bombiela](https://github.com/fbombi13)
 - [Joaquin Caicedo Navarro](https://github.com/joaquincaicedonavarro)
 - [Jonathan Steven Capera](https://github.com/JocoolQ)
-- [José Cañón](https://github.com/jscanon)
+- [José Sebastian Cañón](https://github.com/jscanon)
 - [Daniel David Leal](https://github.com/lealdaniel00)
 - [Sabrina Suarez Arrieta](https://github.com/sabrinasuarezarrieta)
 - [Sebastian Camilo Vanegas](https://github.com/SCVA)
