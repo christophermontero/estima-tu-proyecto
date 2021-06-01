@@ -1,1 +1,5 @@
 *.pyc
+/env/Scripts
+/env/Lib/site-packages
+*.cfg
+/.vs
