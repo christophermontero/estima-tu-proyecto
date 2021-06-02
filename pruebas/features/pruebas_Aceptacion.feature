@@ -59,7 +59,7 @@ Feature: App de estimacion
     Then el sistema eliminara el modulo del proyecto
 
 
-  Scenario: Como usuario regular quiero actualizar el nombre y descripción del módulo asociado a un proyecto
+  Scenario Outline: Como usuario regular quiero actualizar el nombre y descripción del módulo asociado a un proyecto
     Given un <proyecto> existente
     And contiene modulos
     When el usuario regular desee "actualizar" un modulo con <nombre_modulo> y <descripcion_modulo>

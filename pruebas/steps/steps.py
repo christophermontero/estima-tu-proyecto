@@ -136,3 +136,20 @@ def step_impl(context):
     :type context: behave.runner.Context
     """
     raise NotImplementedError(u'STEP: When envio una peticion a la siguiente url "dummy_url" <proyecto>')
+
+@when('el usuario regular desee "actualizar" un modulo con {nombre_modulo} y {descripcion_modulo}')
+def step_impl(context, nombre_modulo, descripcion_modulo):
+    """
+    :type context: behave.runner.Context
+    :type nombre_modulo: str
+    :type descripcion_modulo: str
+    """
+    raise NotImplementedError(
+        u'STEP: When el usuario regular desee "actualizar" un modulo con <nombre_modulo> y <descripcion_modulo>')
+
+@then("el sistema almacenara los cambios del modulo")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(u'STEP: Then el sistema almacenara los cambios del modulo')
