@@ -102,3 +102,8 @@ Scenario Outline: Como usuario regular quiero actualizar una función asociada a
       | modulo3       | funcion3PruebaActualizado | n_campos3Actualizado     | n_objetos3Actualizado     | formula3Actualizado        |
       | modulo4       | funcion4PruebaActualizado | n_campos4Actualizado     | n_objetos3Actualizado     | formula4Actualizado        |
 
+  Scenario: Como usuario regular quiero eliminar una función asociada a un módulo para depurar o refactorizar funciones 
+    Given un <nombre_modulo> existente
+    And contiene funciones
+    When envio una peticion a la siguiente url "dummy_url" <nombre_modulo>
+    Then el sistema eliminara la funcion del modulo

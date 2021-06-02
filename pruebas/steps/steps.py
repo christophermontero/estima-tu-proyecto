@@ -208,3 +208,17 @@ def step_impl(context):
     :type context: behave.runner.Context
     """
     raise NotImplementedError(u'STEP: Then el sistema almacenara los cambios de la funcion')
+
+@when('envio una peticion a la siguiente url "dummy_url" <nombre_modulo>')
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(u'STEP: When envio una peticion a la siguiente url "dummy_url" <nombre_modulo>')
+
+@then("el sistema eliminara la funcion del modulo")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(u'STEP: Then el sistema eliminara la funcion del modulo')
