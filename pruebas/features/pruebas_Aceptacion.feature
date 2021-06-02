@@ -59,5 +59,21 @@ Feature: App de estimacion
     Then el sistema eliminara el modulo del proyecto
 
 
+  Scenario: Como usuario regular quiero actualizar el nombre y descripción del módulo asociado a un proyecto
+    Given un <proyecto> existente
+    And contiene modulos
+    When el usuario regular desee "actualizar" un modulo con <nombre_modulo> y <descripcion_modulo>
+    Then el sistema almacenara los cambios del modulo
+
+    Examples: actualizacion
+      | proyecto | nombre_modulo            | descripcion_modulo                          |
+      | 1        | modulo1PruebaActualizado | Este es el super modulo 1 creado Actualizado|
+      | 2        | modulo2PruebaActualizado | Este es el super modulo 2 creado Actualizado|
+      | 3        | modulo3PruebaActualizado | Este es el super modulo 3 creado Actualizado|
+      | 4        | modulo4PruebaActualizado | Este es el super modulo 4 creado Actualizado|
+
+  
+
+
 
 
