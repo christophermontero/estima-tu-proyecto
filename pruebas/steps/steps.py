@@ -160,3 +160,25 @@ def step_impl(context):
     :type context: behave.runner.Context
     """
     raise NotImplementedError(u'STEP: el sistema retornara el modulo asociado')
+
+
+@when('envio una peticion a la siguiente url "dummy_url" para crear funciones del {nombre_modulo} con los datos {nombre_funcion}, {numero_campos}, {numero_objetos} y {formula_cliente}')
+def step_impl(context, nombre_modulo, nombre_funcion, numero_campos, numero_objetos, formula_cliente):
+    """
+    :type context: behave.runner.Context
+    :type nombre_modulo: str
+    :type nombre_funcion: str
+    :type numero_campos: int
+    :type numero_objetos: int
+    :type formula_cliente: str
+    """
+    raise NotImplementedError(
+        u'STEP: When envio una peticion a la siguiente url "dummy_url" para crear funciones del <nombre_modulo> con los datos <nombre_funcion>, <numero_campos>, <numero_objetos> y <formula_cliente>')
+
+
+@then("el sistema almacenara una funcion asociada a el modulo")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(u'STEP: Then el sistema almacenara una funcion asociada a el modulo')

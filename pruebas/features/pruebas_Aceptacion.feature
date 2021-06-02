@@ -78,8 +78,16 @@ Scenario: Como usuario regular quiero consultar el módulo asociado a un proyect
     When envio una peticion a la siguiente url "dummy_url" <proyecto>
     Then el sistema retornara el modulo asociado 
   
-
-
+  Scenario Outline: Como usuario regular quiero crear una función asociada a un módulo para almacenar el nombre de la función, número de campos, número de objetos y calcular la complejidad basado en la fórmula dada por el cliente
+    Given un <nombre_modulo> existente
+    When envio una peticion a la siguiente url "dummy_url" para crear funciones del <nombre_modulo> con los datos <nombre_funcion>, <numero_campos>, <numero_objetos> y <formula_cliente>
+    Then el sistema almacenara una funcion asociada a el modulo
+    Examples: actualizacion
+      | nombre_modulo | nombre_funcion | numero_campos | numero_objetos | formula_cliente |
+      | modulo1       | funcion1Prueba | n_campos1     | n_objetos1     | formula1        |
+      | modulo2       | funcion2Prueba | n_campos2     | n_objetos2     | formula2        |
+      | modulo3       | funcion3Prueba | n_campos3     | n_objetos3     | formula3        |
+      | modulo4       | funcion4Prueba | n_campos4     | n_objetos3     | formula4        |
 
 
 
