@@ -1,3 +1,7 @@
 *.pyc
 .idea/
 ProjectExample/
+/env/Scripts
+/env/Lib/site-packages
+*.cfg
+/.vs

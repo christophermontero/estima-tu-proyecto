@@ -16,3 +16,11 @@ Las convenciones de codificación están sujetas a [PEP8](https://www.python.org
 - Los nombres de las clases deberán usar la primer letra de cada palabra en mayúscula (_PascalCase_).
 - Las excepciones al ser clases deberán usar _PascalCase_ iniciado siempre con la palabra Error.
 - Los nombres de las funciones y los métodos deberán usar minúsculas y los espacios entre palabras con guión bajo (_snake_case_).
+
+## Nomenclatura para las ramas de desarrollo
+- Rama principal: master
+- Rama de desarrollo: develop
+- Ramas para nuevas características: feature-#issue
+- Rama para documentación: doc-#issue
+- Rama para pruebas: test-#issue
+- Rama para trabajo en curso: wip-#issue

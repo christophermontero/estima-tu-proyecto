@@ -90,7 +90,7 @@ Vea el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para conocer la guía de estil
 - [Christopher Ortiz Montero](https://github.com/christophermontero)
 - [Alvaro Varón](https://github.com/alxvaron)
 - [Carlos Andres Uriza](https://github.com/caurizaf)
-- [Christian Camilo Lopez](https://github.com/cclopezp)
+- [Cristhian Camilo Lopez](https://github.com/cclopezp)
 - [Carlos Andres Bautista](https://github.com/darkclassiccarlos)
 - [David Guillermo Galvis](https://github.com/davidggalvises)
 - [Edwar Arturo Rodriguez](https://github.com/edwarod)
