@@ -153,3 +153,10 @@ def step_impl(context):
     :type context: behave.runner.Context
     """
     raise NotImplementedError(u'STEP: Then el sistema almacenara los cambios del modulo')
+
+@then("el sistema retornara el modulo asociado")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(u'STEP: el sistema retornara el modulo asociado')

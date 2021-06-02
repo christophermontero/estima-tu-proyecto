@@ -72,7 +72,13 @@ Feature: App de estimacion
       | 3        | modulo3PruebaActualizado | Este es el super modulo 3 creado Actualizado|
       | 4        | modulo4PruebaActualizado | Este es el super modulo 4 creado Actualizado|
 
+Scenario: Como usuario regular quiero consultar el módulo asociado a un proyecto por su Id
+    Given un <proyecto> existente
+    And contiene modulos
+    When envio una peticion a la siguiente url "dummy_url" <proyecto>
+    Then el sistema retornara el modulo asociado 
   
+
 
 
 
