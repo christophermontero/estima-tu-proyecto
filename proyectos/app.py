@@ -36,7 +36,7 @@ def create_proyecto():
     if json.get('nombreProyecto') is None:
         return jsonify({'mensaje': 'Bad request'}), 400
 
-    proyecto = Proyecto.create(json['nombreProyecto'])
+    proyecto = Proyecto.create(json['nombreProyecto','descProyecto'])
 
     return jsonify({'proyecto': proyecto.json() })
 
