@@ -182,3 +182,29 @@ def step_impl(context):
     :type context: behave.runner.Context
     """
     raise NotImplementedError(u'STEP: Then el sistema almacenara una funcion asociada a el modulo')
+
+@step("contiene funciones")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(u'STEP: And contiene funciones')
+
+@when('el usuario regular desee "actualizar" una funcion con {nombre_funcion}, {numero_campos}, {numero_objetos} y {formula_cliente}')
+def step_impl(context, nombre_funcion, numero_campos, numero_objetos, formula_cliente):
+    """
+    :type context: behave.runner.Context
+    :type nombre_funcion: str
+    :type numero_campos: int
+    :type numero_objetos: int
+    :type formula_cliente: str
+    """
+    raise NotImplementedError(
+        u'STEP: When el usuario regular desee "actualizar" una funcion con <nombre_funcion>, <numero_campos>, <numero_objetos> y <formula_cliente>')
+
+@then("el sistema almacenara los cambios de la funcion")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(u'STEP: Then el sistema almacenara los cambios de la funcion')

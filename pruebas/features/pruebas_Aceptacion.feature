@@ -90,4 +90,15 @@ Scenario: Como usuario regular quiero consultar el módulo asociado a un proyect
       | modulo4       | funcion4Prueba | n_campos4     | n_objetos3     | formula4        |
 
 
+Scenario Outline: Como usuario regular quiero actualizar una función asociada a un módulo para almacenar el nombre de la función, número de campos, número de objetos y calcular la complejidad basado en la fórmula dada por el cliente
+    Given un <nombre_modulo> existente
+    And contiene funciones
+    When el usuario regular desee "actualizar" una funcion con <nombre_funcion>, <numero_campos>, <numero_objetos> y <formula_cliente>
+    Then el sistema almacenara los cambios de la funcion
+    Examples: actualizacion
+      | nombre_modulo | nombre_funcion            | numero_campos            | numero_objetos            | formula_cliente            |
+      | modulo1       | funcion1PruebaActualizado | n_campos1Actualizado     | n_objetos1Actualizado     | formula1Actualizado        |
+      | modulo2       | funcion2PruebaActualizado | n_campos2Actualizado     | n_objetos2Actualizado     | formula2Actualizado        |
+      | modulo3       | funcion3PruebaActualizado | n_campos3Actualizado     | n_objetos3Actualizado     | formula3Actualizado        |
+      | modulo4       | funcion4PruebaActualizado | n_campos4Actualizado     | n_objetos3Actualizado     | formula4Actualizado        |
 
