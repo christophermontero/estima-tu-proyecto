@@ -1,7 +1,7 @@
 Feature: App de estimacion
 
   Scenario Outline: Como usuario regular quiero crear un proyecto para manejar el proceso de estimación
-    Given la <url> para la creacion
+    Given la "/proyectos" para la creacion
     When el usuario regular desee "crear" un proyecto con <nombre_proyecto> y <descripcion_proyecto>
     Then el sistema almacenara un nuevo proyecto
 
@@ -12,17 +12,10 @@ Feature: App de estimacion
       | proyecto3       | Este es el super proyecto 3 |
       | proyecto4       | Este es el super proyecto 4 |
 
-  Scenario Outline: Como usuario regular quiero consultar un proyecto por id para ver sus módulos y funciones
-    Given un <proyecto> existente
-    When envio una peticion a la siguiente "url"
+  Scenario: Como usuario regular quiero consultar un proyecto por id para ver sus módulos y funciones
+    Given tengo la lista de proyectos
+    When envio una peticion get a la siguiente "/proyectos/id"
     Then el sistema retornara el proyecto con sus modulos y funciones
-
-    Examples: proyectos
-      | proyecto |
-      | 1        |
-      | 2        |
-      | 3        |
-      | 4        |
 
   Scenario Outline: Como usuario regular quiero actualizar el nombre y la descripción de un proyecto para manejar el proceso de estimación
     Given un <proyecto> existente
@@ -38,7 +31,7 @@ Feature: App de estimacion
 
   Scenario: Como usuario regular quiero ver el listado de proyectos para consultar su nombre y descripcion.
     Given esta la aplicacion arriba
-    When envio una peticion a la siguiente url "get_all"
+    When envio una peticion a la siguiente url "/proyectos"
     Then el sistema retornara todos los proyectos con su nombre y descripcion
 
   Scenario Outline: Como usuario regular quiero crear un módulo para asociarlo a un proyecto
@@ -66,18 +59,18 @@ Feature: App de estimacion
     Then el sistema almacenara los cambios del modulo
 
     Examples: actualizacion
-      | proyecto | nombre_modulo            | descripcion_modulo                          |
-      | 1        | modulo1PruebaActualizado | Este es el super modulo 1 creado Actualizado|
-      | 2        | modulo2PruebaActualizado | Este es el super modulo 2 creado Actualizado|
-      | 3        | modulo3PruebaActualizado | Este es el super modulo 3 creado Actualizado|
-      | 4        | modulo4PruebaActualizado | Este es el super modulo 4 creado Actualizado|
+      | proyecto | nombre_modulo            | descripcion_modulo                           |
+      | 1        | modulo1PruebaActualizado | Este es el super modulo 1 creado Actualizado |
+      | 2        | modulo2PruebaActualizado | Este es el super modulo 2 creado Actualizado |
+      | 3        | modulo3PruebaActualizado | Este es el super modulo 3 creado Actualizado |
+      | 4        | modulo4PruebaActualizado | Este es el super modulo 4 creado Actualizado |
 
-Scenario: Como usuario regular quiero consultar el módulo asociado a un proyecto por su Id
+  Scenario: Como usuario regular quiero consultar el módulo asociado a un proyecto por su Id
     Given un <proyecto> existente
     And contiene modulos
     When envio una peticion a la siguiente url "dummy_url" <proyecto>
-    Then el sistema retornara el modulo asociado 
-  
+    Then el sistema retornara el modulo asociado
+
   Scenario Outline: Como usuario regular quiero crear una función asociada a un módulo para almacenar el nombre de la función, número de campos, número de objetos y calcular la complejidad basado en la fórmula dada por el cliente
     Given un <nombre_modulo> existente
     When envio una peticion a la siguiente url "dummy_url" para crear funciones del <nombre_modulo> con los datos <nombre_funcion>, <numero_campos>, <numero_objetos> y <formula_cliente>
@@ -89,20 +82,19 @@ Scenario: Como usuario regular quiero consultar el módulo asociado a un proyect
       | modulo3       | funcion3Prueba | n_campos3     | n_objetos3     | formula3        |
       | modulo4       | funcion4Prueba | n_campos4     | n_objetos3     | formula4        |
 
-
-Scenario Outline: Como usuario regular quiero actualizar una función asociada a un módulo para almacenar el nombre de la función, número de campos, número de objetos y calcular la complejidad basado en la fórmula dada por el cliente
+  Scenario Outline: Como usuario regular quiero actualizar una función asociada a un módulo para almacenar el nombre de la función, número de campos, número de objetos y calcular la complejidad basado en la fórmula dada por el cliente
     Given un <nombre_modulo> existente
     And contiene funciones
     When el usuario regular desee "actualizar" una funcion con <nombre_funcion>, <numero_campos>, <numero_objetos> y <formula_cliente>
     Then el sistema almacenara los cambios de la funcion
     Examples: actualizacion
-      | nombre_modulo | nombre_funcion            | numero_campos            | numero_objetos            | formula_cliente            |
-      | modulo1       | funcion1PruebaActualizado | n_campos1Actualizado     | n_objetos1Actualizado     | formula1Actualizado        |
-      | modulo2       | funcion2PruebaActualizado | n_campos2Actualizado     | n_objetos2Actualizado     | formula2Actualizado        |
-      | modulo3       | funcion3PruebaActualizado | n_campos3Actualizado     | n_objetos3Actualizado     | formula3Actualizado        |
-      | modulo4       | funcion4PruebaActualizado | n_campos4Actualizado     | n_objetos3Actualizado     | formula4Actualizado        |
+      | nombre_modulo | nombre_funcion            | numero_campos        | numero_objetos        | formula_cliente     |
+      | modulo1       | funcion1PruebaActualizado | n_campos1Actualizado | n_objetos1Actualizado | formula1Actualizado |
+      | modulo2       | funcion2PruebaActualizado | n_campos2Actualizado | n_objetos2Actualizado | formula2Actualizado |
+      | modulo3       | funcion3PruebaActualizado | n_campos3Actualizado | n_objetos3Actualizado | formula3Actualizado |
+      | modulo4       | funcion4PruebaActualizado | n_campos4Actualizado | n_objetos3Actualizado | formula4Actualizado |
 
-  Scenario: Como usuario regular quiero eliminar una función asociada a un módulo para depurar o refactorizar funciones 
+  Scenario: Como usuario regular quiero eliminar una función asociada a un módulo para depurar o refactorizar funciones
     Given un <nombre_modulo> existente
     And contiene funciones
     When envio una peticion a la siguiente url "dummy_url" <nombre_modulo>
