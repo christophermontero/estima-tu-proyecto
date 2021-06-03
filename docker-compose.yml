@@ -1,4 +1,4 @@
-version: '3.9'
+version: '2'
 services:
     nginx:
         image: nginx:alpine
@@ -7,8 +7,8 @@ services:
         command: [nginx-debug, '-g', 'daemon off;']
         links:
             - proyectos
-            - modulos
-            - funciones
+            # - modulos
+            # - funciones
         ports:
             - "8080:80"
     sqlite3:
@@ -20,19 +20,21 @@ services:
             - ./sqlite3:/root/db/
         ports:
             - '9000:9000'
-        modulosrt: unless-stopped
+        restart: unless-stopped
         
     proyectos:
         build: ./proyectos
+        depends_on:
+            - sqlite3
         volumes:
            - ".:/sqlite3:rw"
 
-    modulos:
-        build: ./modulos
-        volumes:
-            - ".:/sqlite3:rw"
+    # modulos:
+    #     build: ./modulos
+    #     volumes:
+    #         - ".:/sqlite3:rw"
 
-    funciones:
-        build: ./funciones
-        volumes:
-            - ".:/sqlite3:rw"
+    # funciones:
+    #     build: ./funciones
+    #     volumes:
+    #         - ".:/sqlite3:rw"
