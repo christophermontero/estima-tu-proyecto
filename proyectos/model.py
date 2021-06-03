@@ -54,7 +54,6 @@ class Funcion(Base):
     nombreFuncion = Column(String(50))
     numCampos = Column(Integer)
     numObjetos = Column(Integer)
-    proyecto_id = Column(Integer, ForeignKey("proyectos.idProyecto"))
     modulo_id = Column(Integer, ForeignKey("modulos.idModulo"))
 
     def toJson(self):
