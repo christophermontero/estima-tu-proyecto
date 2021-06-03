@@ -3,8 +3,6 @@ from sqlalchemy.orm import relationship
 from db import Base
 from db import db_session, init_db
 
-# db=SQLAlchemy.init_app()
-
 
 class Proyecto(Base):
     __tablename__ = "proyectos"
@@ -14,8 +12,8 @@ class Proyecto(Base):
     # modulos = relationship("modulos", backref="proyectos", lazy=True)
 
     @classmethod
-    def create(cls, idProyecto, nombre_proyecto, descProyecto):
-        proyecto = Proyecto(idProyecto=idProyecto, nombre_proyecto=nombre_proyecto, descProyecto=descProyecto)
+    def create(cls, idProyecto, nombreProyecto, descProyecto):
+        proyecto = Proyecto(idProyecto=idProyecto, nombreProyecto=nombreProyecto, descProyecto=descProyecto)
         return proyecto.save()
 
     def save(self):
@@ -27,6 +25,13 @@ class Proyecto(Base):
         except:
             return False
 
+    def toJson(self):
+        return {
+            "idProyecto": self.idProyecto,
+            "nombreProyecto": self.nombreProyecto,
+            "descProyecto": self.descProyecto,
+        }
+
 
 class Modulo(Base):
     __tablename__ = "modulos"
@@ -34,7 +39,13 @@ class Modulo(Base):
     nombreModulo = Column(String(50))
     descModulo = Column(String(150))
     proyecto_id = Column(Integer, ForeignKey("proyectos.idProyecto"))
-    funciones = relationship("Funcion", backref="modulos", lazy=True)
+    # funciones = relationship("Funcion", backref="modulos", lazy=True)
+
+
+    def toJson(self):
+        return {
+           # todo
+        }
 
 
 class Funcion(Base):
@@ -46,9 +57,7 @@ class Funcion(Base):
     proyecto_id = Column(Integer, ForeignKey("proyectos.idProyecto"))
     modulo_id = Column(Integer, ForeignKey("modulos.idModulo"))
 
-    def json(self):
+    def toJson(self):
         return {
-            "idProyecto": self.id,
-            "nombreProyecto": self.username,
-            "descProyecto": self.created_at,
+          # todo
         }
