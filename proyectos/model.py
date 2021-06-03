@@ -11,11 +11,11 @@ class Proyecto(Base):
     idProyecto = Column(Integer, primary_key=True, autoincrement=True)
     nombreProyecto = Column(String(50))
     descProyecto = Column(String(150))
-    modulos = relationship("modulos", backref="proyectos", lazy=True)
+    # modulos = relationship("modulos", backref="proyectos", lazy=True)
 
     @classmethod
-    def create(cls, nombre_proyecto, descProyecto):
-        proyecto = Proyecto(nombre_proyecto=nombre_proyecto, descProyecto=descProyecto)
+    def create(cls, idProyecto, nombre_proyecto, descProyecto):
+        proyecto = Proyecto(idProyecto=idProyecto, nombre_proyecto=nombre_proyecto, descProyecto=descProyecto)
         return proyecto.save()
 
     def save(self):

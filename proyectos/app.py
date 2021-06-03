@@ -1,5 +1,5 @@
-from flask import Flask, jsonify
-from flask.globals import request
+from flask import Flask, jsonify, request
+# from flask.globals import request
 from db import db_session, init_db
 from model import Proyecto
 
@@ -31,40 +31,44 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 init_db()
 
 
-# @app.route("/proyectos", methods=["POST"])
-# def create_proyecto():
-#     json = request.get_json(force=True)
+@app.route("/proyectos", methods=["POST"])
+def create_proyecto():
+    data = request.json
+    # return jsonify(data)
+    return jsonify({ 'data': data })
 
-#     if json.get("nombreProyecto") is None:
-#         return jsonify({"mensaje": "error"}), 400
+    # if data['nombreProyecto'] is None:
+    #     # return jsonify({"mensaje": "error"}), 400
+    #     return json.dumps("Bad raquest")
 
-#     proyecto = Proyecto.create(json["nombreProyecto", "descProyecto"])
+    # proyecto = Proyecto.create(data['idProyecto'], data['nombreProyecto'], data['descProyecto'])
 
-#     return jsonify({"proyecto": proyecto.json()})
+    # # return jsonify({"proyecto": proyecto.json()})
+    # return json.dumps(proyecto), 201
 
 
 @app.route("/proyectos", methods=["GET"])
 def get_proyectos():
-    # proyectos = [ Proyecto.json() for proyecto in Proyecto.query.all() ]
-    # return jsonify({'proyectos': proyectos })
-    return jsonify({ "message":"Its alive"})
+    proyectos = [ Proyecto.json() for proyecto in Proyecto.query.all() ]
+    
+    return jsonify({'proyectos': proyectos })
 
 
-# @app.route("/api/proyectos/<idProyecto>", methods=["GET"])
-# def get_user(idProyecto):
-#     proyecto = Proyecto.query.filter_by(idProyecto=idProyecto).first()
-#     if proyecto is None:
-#         return jsonify({"message": "El proyecto no existe"}), 404
+@app.route("/api/proyectos/<idProyecto>", methods=["GET"])
+def get_user(idProyecto):
+    proyecto = Proyecto.query.filter_by(idProyecto=idProyecto).first()
+    if proyecto is None:
+        return jsonify({"message": "El proyecto no existe"}), 404
 
-#     return jsonify({"proyecto": proyecto.json()})
+    return jsonify({"proyecto": proyecto.json()})
 
 
-def json(self):
-    return {
-        "idProyecto": self.idProyecto,
-        "nombreProyecto": self.nombreProyecto,
-        "descProyecto": self.descProyecto,
-    }
+# def json(self):
+#     return {
+#         "idProyecto": self.idProyecto,
+#         "nombreProyecto": self.nombreProyecto,
+#         "descProyecto": self.descProyecto,
+#     }
 
 
 if __name__ == "__main__":
