@@ -10,6 +10,19 @@ app.config["JSONIFY_PRETTYPRINT_REGULAR"] = False
 
 init_db()
 
+@app.route("/funciones", methods=["POST"])
+def create_funcion():
+    data = request.json
+
+    if data["nombreFuncion"] is None:
+        return jsonify({"mensaje": "error"}), 400
+
+    funcion = Funcion.create(
+        data["idFuncion"], data["nombreFuncion"], data["numCampos"], data["numObjetos"], 
+        data["complejidad"], data["modulo_id"],
+    )
+
+    return jsonify({"funcion": funcion.toJson()})
 
 
 

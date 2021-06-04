@@ -62,7 +62,7 @@ class Funcion(Base):
         funcion = Funcion(idFuncion=idFuncion, nombreFuncion=nombreFuncion, 
             numCampos=numCampos, numObjetos=numObjetos, complejidad=complejidad, modulo_id=modulo_id
         )
-        return Funcion.save()
+        return funcion.save()
 
     def save(self):
         try:
