@@ -34,6 +34,14 @@ class Modulo(Base):
             "proyecto_id": self.proyecto_id,
         }
 
+    def delete(self):
+        try:
+            db_session.delete(self)
+            db_session.commit()
+
+            return True
+        except:
+            return False
 
 
 class Proyecto(Base):

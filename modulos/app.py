@@ -23,6 +23,15 @@ def create_modulos():
 
     return jsonify({"modulos": modulo.toJson()})
     
+    
+@app.route("/modulos/<moduloId>", methods=["DELETE"])
+def delete_modulo(moduloId):
+    modulo = Modulo.query.filter_by(idModulo=moduloId).first()
+
+    confirmation = Modulo.delete(modulo)
+
+    return jsonify({"modulos": confirmation})
+    
 
 
 @app.route("/modulos/<proyectoId>", methods=["GET"])
