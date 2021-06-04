@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 
 from db import db_session, init_db
-from model import Proyecto
+from model import Funcion
 
 app = Flask(__name__)
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = False
@@ -11,34 +11,15 @@ app.config["JSONIFY_PRETTYPRINT_REGULAR"] = False
 init_db()
 
 
-@app.route("/proyectos", methods=["POST"])
-def create_proyecto():
-    data = request.json
-
-    if data["nombreProyecto"] is None:
-        return jsonify({"mensaje": "error"}), 400
-
-    proyecto = Proyecto.create(
-        data["idProyecto"], data["nombreProyecto"], data["descProyecto"]
-    )
-
-    return jsonify({"proyectos": proyecto.toJson()})
 
 
-@app.route("/proyectos", methods=["GET"])
-def get_proyectos():
-    proyectos = [proyecto.toJson() for proyecto in Proyecto.query.all()]
+@app.route("/funciones", methods=["GET"])
+def get_funciones():
+    funciones = [funcion.toJson() for funcion in Funcion.query.all()]
 
-    return jsonify({"proyectos": proyectos})
+    return jsonify({"funciones": funciones})
 
 
-@app.route("/api/proyectos/<idProyecto>", methods=["GET"])
-def get_user(idProyecto):
-    proyecto = Proyecto.query.filter_by(idProyecto=idProyecto).first()
-    if proyecto is None:
-        return jsonify({"message": "El proyecto no existe"}), 404
-
-    return jsonify({"proyecto": proyecto.toJson()})
 
 
 

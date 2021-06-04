@@ -8,7 +8,7 @@ services:
         links:
             - proyectos
             # - modulos
-            # - funciones
+            - funciones
         ports:
             - "8080:80"
     sqlite3:
@@ -34,7 +34,7 @@ services:
     #     volumes:
     #         - ".:/sqlite3:rw"
 
-    # funciones:
-    #     build: ./funciones
-    #     volumes:
-    #         - ".:/sqlite3:rw"
+    funciones:
+        build: ./funciones
+        volumes:
+            - ".:/sqlite3:rw"

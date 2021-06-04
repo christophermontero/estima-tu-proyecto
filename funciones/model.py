@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from db import Base
 from db import db_session, init_db
@@ -54,9 +54,31 @@ class Funcion(Base):
     nombreFuncion = Column(String(50))
     numCampos = Column(Integer)
     numObjetos = Column(Integer)
+    complejidad = Column(Float)
     modulo_id = Column(Integer, ForeignKey("modulos.idModulo"))
+
+    @classmethod
+    def create(cls, idFuncion, nombreFuncion, numCampos, numObjetos, complejidad, modulo_id):
+        funcion = Funcion(idFuncion=idFuncion, nombreFuncion=nombreFuncion, 
+            numCampos=numCampos, numObjetos=numObjetos, complejidad=complejidad, modulo_id=modulo_id
+        )
+        return Funcion.save()
+
+    def save(self):
+        try:
+            db_session.add(self)
+            db_session.commit()
+
+            return self
+        except:
+            return False
 
     def toJson(self):
         return {
-          # todo
+            "idFuncion": self.idFuncion,
+            "nombreFuncion": self.nombreFuncion,
+            "numCampos": self.numCampos,
+            "numObjetos": self.numObjetos,
+            "complejidad": self.complejidad,
+            "modulo_id": self.modulo_id
         }
