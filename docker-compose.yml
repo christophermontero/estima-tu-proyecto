@@ -7,7 +7,7 @@ services:
         command: [nginx-debug, '-g', 'daemon off;']
         links:
             - proyectos
-            # - modulos
+            - modulos
             # - funciones
         ports:
             - "8080:80"
@@ -29,10 +29,12 @@ services:
         volumes:
            - ".:/sqlite3:rw"
 
-    # modulos:
-    #     build: ./modulos
-    #     volumes:
-    #         - ".:/sqlite3:rw"
+    modulos:
+        build: ./modulos
+        depends_on:
+            - sqlite3
+        volumes:
+           - ".:/sqlite3:rw"
 
     # funciones:
     #     build: ./funciones
