@@ -54,11 +54,28 @@ class Funcion(Base):
     nombreFuncion = Column(String(50))
     numCampos = Column(Integer)
     numObjetos = Column(Integer)
-    complejidad = Column(Float)
+    complejidad = Column(String(8))
     modulo_id = Column(Integer, ForeignKey("modulos.idModulo"))
 
     @classmethod
     def create(cls, idFuncion, nombreFuncion, numCampos, numObjetos, complejidad, modulo_id):
+        if complejidad == None:
+            if numCampos < 6:
+                if numObjetos == 2:
+                    complejidad = "media"
+                elif numObjetos > 2:
+                    complejidad = "alta"
+                else:
+                    complejidad = "baja"
+            elif numCampos < 11:
+                if numObjetos > 2:
+                    complejidad = "alta"
+                else:
+                    complejidad = "media"
+            elif numObjetos > 2:
+                complejidad = "muy alta"
+            else:
+                complejidad = "alta"
         funcion = Funcion(idFuncion=idFuncion, nombreFuncion=nombreFuncion, 
             numCampos=numCampos, numObjetos=numObjetos, complejidad=complejidad, modulo_id=modulo_id
         )
