@@ -20,6 +20,13 @@ def get_funciones():
     return jsonify({"funciones": funciones})
 
 
+@app.route("/funciones/<idFuncion>", methods=["GET"])
+def get_funcion(idFuncion):
+    funcion = Funcion.query.filter_by(idFuncion=idFuncion).first()
+    if funcion is None:
+        return jsonify({"message": "La función no existe"}), 404
+
+    return jsonify({"funcion": funcion.toJson()})
 
 
 
