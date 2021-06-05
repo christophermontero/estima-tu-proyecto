@@ -34,9 +34,8 @@ Feature: App de estimacion
       | 4        | 4      | modulo4Prueba | Este es el super modulo 4 creado |
 
   Scenario: Como usuario regular quiero borrar el módulo asociado a un proyecto por Id para eliminar todas las funciones asociadas
-    Given un <proyecto> existente
-    And contiene modulos
-    When envio una peticion a la siguiente url "dummy_url" <proyecto>
+    Given un modulo 1 del proyecto 10
+    When llamo el metodo borrar modulo
     Then el sistema eliminara el modulo del proyecto
 
     #---------------------------------------------------------------------------------------------------

@@ -107,20 +107,17 @@ def step_impl(context):
     assert tamano_actual - context.size is 1
 
 
-@step("contiene modulos")
-def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    raise NotImplementedError(u'STEP: And contiene modulos')
-
-
 @then("el sistema eliminara el modulo del proyecto")
 def step_impl(context):
     """
     :type context: behave.runner.Context
     """
-    raise NotImplementedError(u'STEP: Then el sistema eliminara el modulo del proyecto')
+    session = requests.Session()
+    obtener_modulos_proyecto = f"http://localhost:8080/modulos/{context.id_proyecto}"
+
+    response = session.get(url=obtener_modulos_proyecto)
+    tamano_actual = len(json.loads(response.text)["modulos"])
+    assert tamano_actual - context.size is -1
 
 
 @when('envio una peticion get a la siguiente "{url}"')
@@ -178,14 +175,6 @@ def step_impl(context, nombre_proyecto, descripcion_proyecto):
     """
     raise NotImplementedError(
         u'STEP: When el usuario regular desee "actualizar" un proyecto con <nombre_proyecto> y <descripcion_proyecto>')
-
-
-@when('envio una peticion a la siguiente url "dummy_url" <proyecto>')
-def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    raise NotImplementedError(u'STEP: When envio una peticion a la siguiente url "dummy_url" <proyecto>')
 
 
 @when('el usuario regular desee "actualizar" un modulo con {nombre_modulo} y {descripcion_modulo}')
@@ -351,3 +340,26 @@ def step_impl(context, proyecto, modulo, nombre_modulo, descripcion_modulo):
     prepared = req.prepare()
     pretty_print_POST(prepared)
     response = session.send(prepared)
+
+
+@given("un modulo {id_modulo} del proyecto {id_proyecto}")
+def step_impl(context, id_modulo, id_proyecto):
+    """
+    :type context: behave.runner.Context
+    """
+    context.id_proyecto = id_proyecto
+    context.id_modulo = id_modulo
+    obtener_modulos_proyecto = f"http://localhost:8080/modulos/{id_proyecto}"
+    session = requests.Session()
+    response = session.get(url=obtener_modulos_proyecto)
+    context.size = len(json.loads(response.text)["modulos"])
+
+
+@when("llamo el metodo borrar modulo")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    url = f"http://localhost:8080/modulos/{context.id_modulo}"
+    session = requests.Session()
+    response = session.delete(url=url)
