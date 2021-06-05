@@ -27,11 +27,9 @@ Este es un proyecto académico, para la asignatura de ingeniería de software I 
 Calcular la complejidad de un proyecto basado en la cantidad de campos y objetos contenidos en cada módulo; es necesario persistir la información, sin embargo, no deberá tener autorización ni autenticación, por lo que sólo se usará un rol genérico.
 
 ### Endpoints del API
-* Proyecto
-* Módulos
-* Funciones
-* Campos
-* Parámetros
+* Proyecto: http://localhost:8080/proyectos
+* Módulos: http://localhost:8080/modulos
+* Funciones: http://localhost:8080/funciones
 
 ### Modelos de datos
 * Proyecto:
