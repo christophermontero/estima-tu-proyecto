@@ -132,6 +132,6 @@ Vea el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para conocer la guía de estil
 - [Sebastian Camilo Vanegas](https://github.com/SCVA)
 - [William Carpeta](https://github.com/wakoagui)
 - [Alejandro Daza](https://github.com/apdaza)
-- [Luis Morales] (https://github.com/luisemo)
+- [Luis Morales](https://github.com/luisemo)
 ## Licencia
 Este proyecto es de código abierto y está disponible bajo la [Licencia MIT](http://opensource.org/licenses/mit-license.php).
