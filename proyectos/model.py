@@ -23,6 +23,7 @@ class Proyecto(Base):
 
             return self
         except:
+            db_session.rollback()
             return False
 
     def delete(self):
