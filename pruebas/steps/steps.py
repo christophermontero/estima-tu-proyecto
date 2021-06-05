@@ -218,7 +218,9 @@ def step_impl(context):
     """
     :type context: behave.runner.Context
     """
-    raise NotImplementedError(u'STEP: el sistema retornara el modulo asociado')
+    t = json.loads(context.response)
+    assert t["modulos"] is not None
+
 
 
 @when(
@@ -300,3 +302,25 @@ def step_impl(context):
     session = requests.Session()
     response = session.get(url=url)
     context.proyectos = json.loads(response.text)["proyectos"]
+
+
+
+
+@given("un modulo existente dentro de un proyecto {id_proyecto}")
+def step_impl(context,id_proyecto):
+    """
+    :type context: behave.runner.Context
+    """
+    url = f"http://localhost:8080/modulos/{id_proyecto}"
+    context.url = url
+
+
+@when("envio una peticion a la siguiente url de modulos")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    url = context.url
+    session = requests.Session()
+    response = session.get(url=url)
+    context.response = response.text

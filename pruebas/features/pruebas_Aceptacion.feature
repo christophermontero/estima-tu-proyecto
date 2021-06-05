@@ -51,24 +51,24 @@ Feature: App de estimacion
     When envio una peticion a la siguiente url "dummy_url" <proyecto>
     Then el sistema eliminara el modulo del proyecto
 
+    #---------------------------------------------------------------------------------------------------
 
-  Scenario Outline: Como usuario regular quiero actualizar el nombre y descripción del módulo asociado a un proyecto
-    Given un <proyecto> existente
-    And contiene modulos
-    When el usuario regular desee "actualizar" un modulo con <nombre_modulo> y <descripcion_modulo>
-    Then el sistema almacenara los cambios del modulo
-
-    Examples: actualizacion
-      | proyecto | nombre_modulo            | descripcion_modulo                           |
-      | 1        | modulo1PruebaActualizado | Este es el super modulo 1 creado Actualizado |
-      | 2        | modulo2PruebaActualizado | Este es el super modulo 2 creado Actualizado |
-      | 3        | modulo3PruebaActualizado | Este es el super modulo 3 creado Actualizado |
-      | 4        | modulo4PruebaActualizado | Este es el super modulo 4 creado Actualizado |
+#  Scenario Outline: Como usuario regular quiero actualizar el nombre y descripción del módulo asociado a un proyecto
+#    Given un <proyecto> existente
+#    And contiene modulos
+#    When el usuario regular desee "actualizar" un modulo con <nombre_modulo> y <descripcion_modulo>
+#    Then el sistema almacenara los cambios del modulo
+#
+#    Examples: actualizacion
+#      | proyecto | nombre_modulo            | descripcion_modulo                           |
+#      | 1        | modulo1PruebaActualizado | Este es el super modulo 1 creado Actualizado |
+#      | 2        | modulo2PruebaActualizado | Este es el super modulo 2 creado Actualizado |
+#      | 3        | modulo3PruebaActualizado | Este es el super modulo 3 creado Actualizado |
+#      | 4        | modulo4PruebaActualizado | Este es el super modulo 4 creado Actualizado |
 
   Scenario: Como usuario regular quiero consultar el módulo asociado a un proyecto por su Id
-    Given un <proyecto> existente
-    And contiene modulos
-    When envio una peticion a la siguiente url "dummy_url" <proyecto>
+    Given un modulo existente dentro de un proyecto 45
+    When envio una peticion a la siguiente url de modulos
     Then el sistema retornara el modulo asociado
 
   Scenario Outline: Como usuario regular quiero crear una función asociada a un módulo para almacenar el nombre de la función, número de campos, número de objetos y calcular la complejidad basado en la fórmula dada por el cliente
