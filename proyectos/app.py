@@ -45,12 +45,22 @@ def get_proyecto(idProyecto):
 @app.route("/proyectos/modulos/<idProyecto>", methods=["GET"])
 def get_proyecto_y_modulos(idProyecto):
     
-    proyecto = Proyecto.query.filter_by(idProyecto=idProyecto).options(joinedload('modulos')).first()
+    proyecto = Proyecto.query.options(joinedload('modulos')).filter_by(idProyecto=idProyecto).first()
 
     if proyecto is None:
         return jsonify({"message": "El proyecto no existe"}), 404
 
-    return jsonify({"proyecto": proyecto.toJson()})
+    return jsonify({"proyecto": proyecto.toJsonWithModules()})
+
+@app.route("/proyectos/modulos/funciones/<idProyecto>", methods=["GET"])
+def get_proyecto_y_modulos_y_funciones(idProyecto):
+    
+    proyecto = Proyecto.query.options(joinedload('modulos').joinedload('funciones')).filter_by(idProyecto=idProyecto).first()
+
+    if proyecto is None:
+        return jsonify({"message": "El proyecto no existe"}), 404
+
+    return jsonify({"proyecto": proyecto.toJsonWithModulesAndFunctions()})
 
 @app.route("/proyectos/<idProyecto>", methods=["DELETE"])
 def delete_proyecto(idProyecto):
