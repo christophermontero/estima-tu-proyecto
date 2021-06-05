@@ -130,7 +130,7 @@ Vea el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para conocer la guía de estil
 - [Daniel David Leal](https://github.com/lealdaniel00)
 - [Sabrina Suarez Arrieta](https://github.com/sabrinasuarezarrieta)
 - [Sebastian Camilo Vanegas](https://github.com/SCVA)
-- [William Carpeta](https://github.com/wakoagui)
+- [William Aguirre Carpeta](https://github.com/wakoagui)
 - [Alejandro Daza](https://github.com/apdaza)
 - [Luis Morales](https://github.com/luisemo)
 ## Licencia
