@@ -1,4 +1,5 @@
-from flask_sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from db import Base
 
 
@@ -16,6 +17,37 @@ class Modulo(Base):
     descModulo = Column(String(150))
     proyecto_id = Column(Integer, ForeignKey("proyecto.idProyecto"))
     funciones = relationship("Funcion", backref="modulo", lazy=True)
+
+    @classmethod
+    def create(cls, idModulo, nombreModulo, descModulo, proyecto_id):
+        modulo = Modulo(idModulo=idModulo, nombreModulo=nombreModulo, descModulo=descModulo, proyecto_id=proyecto_id)
+        return modulo.save()
+
+    def save(self):
+        try:
+            db_session.add(self)
+            db_session.commit()
+
+            return self
+        except:
+            return False
+
+    def toJson(self):
+        return {
+            "idModulo": self.idModulo,
+            "nombreModulo": self.nombreModulo,
+            "descModulo": self.descModulo,
+            "proyecto_id": self.proyecto_id,
+        }
+
+    def delete(self):
+        try:
+            db_session.delete(self)
+            db_session.commit()
+
+            return True
+        except:
+            return False
 
 class Funcion(Base):
     __tablename__ = "funcion"
