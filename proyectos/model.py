@@ -26,6 +26,16 @@ class Proyecto(Base):
             db_session.rollback()
             return False
 
+    def delete(self):
+        try:
+            db_session.delete(self)
+            db_session.commit()
+
+            return True
+        except:
+            db_session.rollback()
+            return False
+
     def toJson(self):
         return {
             "idProyecto": self.idProyecto,

@@ -32,7 +32,7 @@ def get_proyectos():
     return jsonify({"proyectos": proyectos})
 
 
-@app.route("/api/proyectos/<idProyecto>", methods=["GET"])
+@app.route("/proyectos/<idProyecto>", methods=["GET"])
 def get_user(idProyecto):
     proyecto = Proyecto.query.filter_by(idProyecto=idProyecto).first()
     if proyecto is None:
@@ -40,7 +40,13 @@ def get_user(idProyecto):
 
     return jsonify({"proyecto": proyecto.toJson()})
 
+@app.route("/proyectos/<idProyecto>", methods=["DELETE"])
+def delete_proyecto(idProyecto):
+    proyecto = Proyecto.query.filter_by(idProyecto=idProyecto).first()
 
+    confirmation = Proyecto.delete(proyecto)
+
+    return jsonify({"proyectos": confirmation})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
