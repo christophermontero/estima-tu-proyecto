@@ -94,6 +94,8 @@ Descripción de las carpetas y archivos del proyecto
 └── README.md                  # Descripción del proyecto
 ```
 
+Puede consultar la documentación del API [aquí](https://documenter.getpostman.com/view/7032390/TzY4gb3F)
+
 ## Guía de instalación
 Clonar el repositorio y construir los contenedores.
 
