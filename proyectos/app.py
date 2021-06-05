@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 
 from db import db_session, init_db
 from model import Proyecto
+from sqlalchemy.orm import joinedload
 
 app = Flask(__name__)
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = False
@@ -33,8 +34,19 @@ def get_proyectos():
 
 
 @app.route("/proyectos/<idProyecto>", methods=["GET"])
-def get_user(idProyecto):
+def get_proyecto(idProyecto):
     proyecto = Proyecto.query.filter_by(idProyecto=idProyecto).first()
+    if proyecto is None:
+        return jsonify({"message": "El proyecto no existe"}), 404
+
+    return jsonify({"proyecto": proyecto.toJson()})
+
+
+@app.route("/proyectos/modulos/<idProyecto>", methods=["GET"])
+def get_proyecto_y_modulos(idProyecto):
+    
+    proyecto = Proyecto.query.filter_by(idProyecto=idProyecto).options(joinedload('modulos')).first()
+
     if proyecto is None:
         return jsonify({"message": "El proyecto no existe"}), 404
 
