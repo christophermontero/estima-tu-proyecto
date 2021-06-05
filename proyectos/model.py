@@ -42,12 +42,6 @@ class Modulo(Base):
     funciones = relationship("Funcion", backref="modulo", lazy=True)
 
 
-    def toJson(self):
-        return {
-           # todo
-        }
-
-
 class Funcion(Base):
     __tablename__ = "funcion"
     idFuncion = Column(Integer, primary_key=True, autoincrement=True)
@@ -56,8 +50,3 @@ class Funcion(Base):
     numObjetos = Column(Integer)
     complejidad = Column(String(8))
     modulo_id = Column(Integer, ForeignKey("modulo.idModulo"))
-
-    def toJson(self):
-        return {
-          # todo
-        }

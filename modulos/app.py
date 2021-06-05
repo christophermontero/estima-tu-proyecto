@@ -13,7 +13,7 @@ init_db()
 @app.route("/modulos", methods=["POST"])
 def create_modulos():
     data = request.json
-    #return jsonify({"modulos": "hola"})
+    
     if data["nombreModulo"] is None:
         return jsonify({"mensaje": "error"}), 400
 

@@ -20,13 +20,6 @@ class Modulo(Base):
     proyecto_id = Column(Integer, ForeignKey("proyecto.idProyecto"))
     funciones = relationship("Funcion", backref="modulo", lazy=True)
 
-
-    def toJson(self):
-        return {
-           # todo
-        }
-
-
 class Funcion(Base):
     __tablename__ = "funcion"
     idFuncion = Column(Integer, primary_key=True, autoincrement=True)
