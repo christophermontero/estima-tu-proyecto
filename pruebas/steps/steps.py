@@ -1,3 +1,4 @@
+import random
 import requests
 import json
 from behave import *
@@ -69,13 +70,12 @@ def step_impl(context, id, nombre_proyecto, descripcion_proyecto):
     response = session.send(prepared)
 
 
-
 @then("el sistema retornara el proyecto con sus modulos y funciones")
 def step_impl(context):
     """
     :type context: behave.runner.Context
     """
-    # Se verifica que contenga nombre y descripcion
+    assert context.proyecto_info["proyecto"]["idProyecto"] == context.id_proyecto
 
 
 @then("el sistema almacenara los cambios del proyecto")
@@ -125,9 +125,12 @@ def step_impl(context, url):
     """
     :type context: behave.runner.Context
     """
+    id_proyecto = random.choice(context.proyectos)['idProyecto']
+    context.id_proyecto = id_proyecto
+    url_get_all = f"http://localhost:8080/proyectos/{id_proyecto}"
     session = requests.Session()
-    response = session.get(url=context.api_url + url)
-    context.proyecto = json.loads(response.text)
+    response = session.get(url=url_get_all)
+    context.proyecto_info = json.loads(response.text)
 
 
 @given("un {proyecto} existente")

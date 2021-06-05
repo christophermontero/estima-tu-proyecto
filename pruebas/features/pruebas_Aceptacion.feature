@@ -14,7 +14,7 @@ Feature: App de estimacion
 
   Scenario: Como usuario regular quiero consultar un proyecto por id para ver sus módulos y funciones
     Given tengo la lista de proyectos
-    When envio una peticion get a la siguiente "/proyectos/id"
+    When envio una peticion get a la siguiente "/proyectos"
     Then el sistema retornara el proyecto con sus modulos y funciones
 
   Scenario Outline: Como usuario regular quiero actualizar el nombre y la descripción de un proyecto para manejar el proceso de estimación
