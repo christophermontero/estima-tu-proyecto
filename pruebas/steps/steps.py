@@ -205,27 +205,18 @@ def step_impl(context):
     assert t["modulos"] is not None
 
 
-@when(
-    'envio una peticion a la siguiente url "dummy_url" para crear funciones del {nombre_modulo} con los datos {nombre_funcion}, {numero_campos}, {numero_objetos} y {formula_cliente}')
-def step_impl(context, nombre_modulo, nombre_funcion, numero_campos, numero_objetos, formula_cliente):
-    """
-    :type context: behave.runner.Context
-    :type nombre_modulo: str
-    :type nombre_funcion: str
-    :type numero_campos: int
-    :type numero_objetos: int
-    :type formula_cliente: str
-    """
-    raise NotImplementedError(
-        u'STEP: When envio una peticion a la siguiente url "dummy_url" para crear funciones del <nombre_modulo> con los datos <nombre_funcion>, <numero_campos>, <numero_objetos> y <formula_cliente>')
-
-
 @then("el sistema almacenara una funcion asociada a el modulo")
 def step_impl(context):
     """
     :type context: behave.runner.Context
     """
-    raise NotImplementedError(u'STEP: Then el sistema almacenara una funcion asociada a el modulo')
+    url = context.obtener_url
+    session = requests.Session()
+
+    response = session.get(url=url)
+    print(response.text)
+    tamano_actual = len(json.loads(response.text)["funcion"])
+    assert tamano_actual - context.size is 1
 
 
 @step("contiene funciones")
@@ -271,7 +262,11 @@ def step_impl(context):
     """
     :type context: behave.runner.Context
     """
-    raise NotImplementedError(u'STEP: Then el sistema eliminara la funcion del modulo')
+    session = requests.Session()
+
+    response = session.get(url=context.obtener)
+    tamano_actual = len(json.loads(response.text)["funciones"])
+    assert tamano_actual - context.size is -1
 
 
 @given("tengo la lista de proyectos")
@@ -363,3 +358,82 @@ def step_impl(context):
     url = f"http://localhost:8080/modulos/{context.id_modulo}"
     session = requests.Session()
     response = session.delete(url=url)
+
+
+@given("el link de crear funciones")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    context.url = "http://localhost:8080/funciones"
+
+
+@when(
+    "envio una peticion para crear funciones con {idFuncion},{nombreFuncion},{numCampos},{numObjetos},{modulo_id}")
+def step_impl(context, idFuncion, nombreFuncion, numCampos, numObjetos, modulo_id):
+    """
+    :type context: behave.runner.Context
+    :type idFuncion: str
+    :type nombre_funcion: str
+    :type numCampos: str
+    :type numObjetos: str
+    :type complejidad: str
+    :type modulo_id: str
+    """
+    url = context.url
+
+    body = {
+        "idFuncion": idFuncion,
+        "nombreFuncion": nombreFuncion,
+        "numCampos": int(numCampos),
+        "numObjetos": int(numObjetos),
+        "complejidad": None,
+        "modulo_id": modulo_id
+    }
+    obtener_funciones_porModulo = f"http://localhost:8080/funciones/porModulo/{modulo_id}"
+    context.obtener_url = obtener_funciones_porModulo
+    session = requests.Session()
+    response = session.get(url=obtener_funciones_porModulo)
+    context.size = len(json.loads(response.text)["funcion"])
+    headers = {'Content-Type': 'application/json',
+               'Accept': '*/*',
+               'Connection': 'keep-alive',
+               'Accept-Encoding': 'gzip, deflate, br'
+               }
+    req = requests.Request('POST', url, headers=headers, json=body)
+    prepared = req.prepare()
+    pretty_print_POST(prepared)
+    response = session.send(prepared)
+    print(response.text)
+
+
+@given("el link de borrar funciones")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(u'STEP: Given el link de borrar funciones')
+
+
+@given("el link de borrar funciones {idFuncion}")
+def step_impl(context, idFuncion):
+    """
+    :type context: behave.runner.Context
+    :type idFuncion: str
+    """
+    context.url = f"http://localhost:8080/funciones/{idFuncion}"
+
+
+@when("envio una peticion delete para la url")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    obtener_funciones = "http://localhost:8080/funciones"
+    context.obtener = obtener_funciones
+    session = requests.Session()
+    response = session.get(url=context.obtener)
+    print(response.text)
+    context.size = len(json.loads(response.text)["funciones"])
+    session = requests.Session()
+    response = session.delete(url=context.url)

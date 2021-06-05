@@ -45,18 +45,23 @@ Feature: App de estimacion
     Then el sistema retornara el modulo asociado
 
   Scenario Outline: Como usuario regular quiero crear una función asociada a un módulo para almacenar el nombre de la función, número de campos, número de objetos y calcular la complejidad basado en la fórmula dada por el cliente
-    Given un <nombre_modulo> existente
-    When envio una peticion a la siguiente url "dummy_url" para crear funciones del <nombre_modulo> con los datos <nombre_funcion>, <numero_campos>, <numero_objetos> y <formula_cliente>
+    Given el link de crear funciones
+    When envio una peticion para crear funciones con <idFuncion>,<nombreFuncion>,<numCampos>,<numObjetos>,<modulo_id>
     Then el sistema almacenara una funcion asociada a el modulo
     Examples: actualizacion
-      | nombre_modulo | nombre_funcion | numero_campos | numero_objetos | formula_cliente |
-      | modulo1       | funcion1Prueba | n_campos1     | n_objetos1     | formula1        |
-      | modulo2       | funcion2Prueba | n_campos2     | n_objetos2     | formula2        |
-      | modulo3       | funcion3Prueba | n_campos3     | n_objetos3     | formula3        |
-      | modulo4       | funcion4Prueba | n_campos4     | n_objetos3     | formula4        |
+      | idFuncion | nombreFuncion  | numCampos | numObjetos | modulo_id |
+      | 10        | funcion1Prueba | 15        | 5          | 2         |
+      | 2         | funcion2Prueba | 16        | 6          | 2         |
+      | 3         | funcion3Prueba | 1         | 2          | 2         |
+      | 4         | funcion4Prueba | 2         | 3          | 2         |
 
-  Scenario: Como usuario regular quiero eliminar una función asociada a un módulo para depurar o refactorizar funciones
-    Given un <nombre_modulo> existente
-    And contiene funciones
-    When envio una peticion a la siguiente url "dummy_url" <nombre_modulo>
+  Scenario Outline: Como usuario regular quiero eliminar una función asociada a un módulo para depurar o refactorizar funciones
+    Given el link de borrar funciones <idFuncion>
+    When envio una peticion delete para la url
     Then el sistema eliminara la funcion del modulo
+    Examples: actualizacion
+      | idFuncion |
+      | 10        |
+      | 2         |
+      | 3         |
+      | 4         |
