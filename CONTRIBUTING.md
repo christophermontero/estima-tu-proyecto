@@ -5,9 +5,14 @@ Para crear un _pull request_, siga las instrucciones de GitHub en como [crear un
 ## Tecnologías
 
 Este proyecto es posible gracias a todos estos lenguajes, bibliotecas y _frameworks_ de código abierto.
-| Tecnología                                           | Descripción                                      |
-| ---------------------------------------------------- | ------------------------------------------------ |
-| [Flask](https://flask.palletsprojects.com/en/2.0.x/) | Flask es un framework de aplicaciones web ligero |
+| Tecnología                                                            | Descripción                                                                           |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| [Flask](https://flask.palletsprojects.com/en/2.0.x/)                  | Flask es un framework de aplicaciones web ligero                                      |
+| [Flask-alchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) | Es una extensión para Flask que agrega soporte para SQLAlchemy                        |
+| [Pytest](https://docs.pytest.org/en/6.2.x/)                           | Framework que facilita la escritura de pequeñas pruebas                               |
+| [Behave](https://behave.readthedocs.io/en/stable/)                    | Es un desarrollo dirigido por el comportamiento                                       |
+| [Docker](https://docs.docker.com/)                                    | Es una plataforma abierta para desarrollar y ejecutar aplicaciones                    |
+| [Docker-compose](https://docs.docker.com/compose/)                    | Es una herramienta para definir y ejecutar aplicaciones Docker de varios contenedores |
 
 ## Guía de estilo
 Las convenciones de codificación están sujetas a [PEP8](https://www.python.org/dev/peps/pep-0008/)
