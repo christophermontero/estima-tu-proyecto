@@ -2,15 +2,15 @@ Feature: App de estimacion
 
   Scenario Outline: Como usuario regular quiero crear un proyecto para manejar el proceso de estimación
     Given la "/proyectos" para la creacion
-    When el usuario regular desee "crear" un proyecto con <nombre_proyecto> y <descripcion_proyecto>
+    When el usuario regular desee "crear" un proyecto con <id> <nombre_proyecto> y <descripcion_proyecto>
     Then el sistema almacenara un nuevo proyecto
 
     Examples: proyectos
-      | nombre_proyecto | descripcion_proyecto        |
-      | proyecto1       | Este es el super proyecto 1 |
-      | proyecto2       | Este es el super proyecto 2 |
-      | proyecto3       | Este es el super proyecto 3 |
-      | proyecto4       | Este es el super proyecto 4 |
+      | id | nombre_proyecto | descripcion_proyecto        |
+      | 10  | proyecto1       | Este es el super proyecto 1 |
+      | 2  | proyecto2       | Este es el super proyecto 2 |
+      | 3  | proyecto3       | Este es el super proyecto 3 |
+      | 4  | proyecto4       | Este es el super proyecto 4 |
 
   Scenario: Como usuario regular quiero consultar un proyecto por id para ver sus módulos y funciones
     Given tengo la lista de proyectos

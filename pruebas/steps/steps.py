@@ -23,22 +23,51 @@ def step_impl(context, url):
     context.resource = url
 
 
-@when('el usuario regular desee "crear" un proyecto con {nombre_proyecto} y {descripcion_proyecto}')
-def step_impl(context, nombre_proyecto, descripcion_proyecto):
+def pretty_print_POST(req):
+    """
+    At this point it is completely built and ready
+    to be fired; it is "prepared".
+
+    However pay attention at the formatting used in
+    this function because it is programmed to be pretty
+    printed and may differ from the actual request.
+    """
+    print('{}\n{}\r\n{}\r\n\r\n{}'.format(
+        '-----------START-----------',
+        req.method + ' ' + req.url,
+        '\r\n'.join('{}: {}'.format(k, v) for k, v in req.headers.items()),
+        req.body,
+    ))
+
+
+@when('el usuario regular desee "crear" un proyecto con {id} {nombre_proyecto} y {descripcion_proyecto}')
+def step_impl(context, id, nombre_proyecto, descripcion_proyecto):
     """
     :type context: behave.runner.Context
     :type nombre_proyecto: str
     :type descripcion_proyecto: str
     """
     url = context.api_url + context.resource
-    body = {"nombreProyecto": nombre_proyecto,
-            "descProyecto": descripcion_proyecto}
 
+    body = {
+        "idProyecto": id,
+        "nombreProyecto": nombre_proyecto,
+        "descProyecto": descripcion_proyecto
+    }
     session = requests.Session()
-
     response = session.get(url=url)
+
     context.size = len(json.loads(response.text)["proyectos"])
-    session.post(url=url, data=body)
+    headers = {'Content-Type': 'application/json',
+               'Accept': '*/*',
+               'Connection': 'keep-alive',
+               'Accept-Encoding': 'gzip, deflate, br'
+               }
+    req = requests.Request('POST', url, headers=headers, json=body)
+    prepared = req.prepare()
+    pretty_print_POST(prepared)
+    response = session.send(prepared)
+
 
 
 @then("el sistema retornara el proyecto con sus modulos y funciones")

@@ -9,7 +9,7 @@ class Proyecto(Base):
     idProyecto = Column(Integer, primary_key=True, autoincrement=True)
     nombreProyecto = Column(String(50))
     descProyecto = Column(String(150))
-    modulos = relationship("Modulo", backref="proyecto", lazy=True)
+    # modulos = relationship("Modulo", backref="proyecto", lazy=True)
 
     @classmethod
     def create(cls, idProyecto, nombreProyecto, descProyecto):
