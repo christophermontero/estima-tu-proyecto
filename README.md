@@ -10,7 +10,7 @@
   - [Tabla de contenidos:](#tabla-de-contenidos)
   - [Descripción del proyecto](#descripción-del-proyecto)
     - [Primera iteración](#primera-iteración)
-    - [Endpoints del API](#endpoints-del-api)
+    - [Rutas del API](#rutas-del-api)
     - [Modelos de datos](#modelos-de-datos)
   - [Guía de usuario](#guía-de-usuario)
   - [Guía de instalación](#guía-de-instalación)
@@ -19,35 +19,41 @@
   - [Autores](#autores)
   - [Licencia](#licencia)
 
-
 ## Descripción del proyecto
 Este es un proyecto académico, para la asignatura de ingeniería de software I de la Universidad Distrital Francisco José de Caldas
 
 ### Primera iteración
 Calcular la complejidad de un proyecto basado en la cantidad de campos y objetos contenidos en cada módulo; es necesario persistir la información, sin embargo, no deberá tener autorización ni autenticación, por lo que sólo se usará un rol genérico.
 
-### Endpoints del API
+### Rutas del API
+```
 * Proyecto: http://localhost:8080/proyectos
 * Módulos: http://localhost:8080/modulos
 * Funciones: http://localhost:8080/funciones
+```
 
 ### Modelos de datos
-* Proyecto:
-  * Id proyecto
-  * Nombre proyecto
-  * Descripción del proyecto
-* Módulo:
-  * Id proyecto
-  * Id módulo
-  * Nombre módulo
-  * Descripción del módulo
-* Función:
-  * Id módulo
-  * Id función
-  * Nombre función
-  * Número de campos
-  * Número de objetos
-  * Complejidad
+* proyecto:
+  * idProyecto INTEGER NOT NULL,
+  * nombreProyecto VARCHAR(50),
+  * descProyecto VARCHAR(150),
+  * PRIMARY KEY (idProyecto)
+* modulo:
+  * idModulo INTEGER NOT NULL,
+  * nombreModulo VARCHAR(50),
+  * descModulo VARCHAR(150),
+  * proyecto_id INTEGER,
+  * RIMARY KEY (idModulo),
+  * FOREIGN KEY(proyecto_id) REFERENCES proyecto (idProyecto)
+* funcion:
+  * idFuncion INTEGER NOT NULL,
+  * nombreFuncion VARCHAR(50),
+  * numCampos INTEGER,
+  * numObjetos INTEGER,
+  * complejidad VARCHAR(8),
+  * modulo_id INTEGER,
+  * PRIMARY KEY (idFuncion),
+  * FOREIGN KEY(modulo_id) REFERENCES modulo (idModulo)
 
 ## Guía de usuario
 Descripción de las carpetas y archivos del proyecto
