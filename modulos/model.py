@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from db import Base
+from db import db_session, init_db
 
 
 class Proyecto(Base):
@@ -8,15 +9,15 @@ class Proyecto(Base):
     idProyecto = Column(Integer, primary_key=True, autoincrement=True)
     nombreProyecto = Column(String(50))
     descProyecto = Column(String(150))
-    modulos = relationship("Modulo", backref="proyecto", lazy=True)
+    # modulos = relationship("Modulo", backref="proyecto", lazy=True)
 
 class Modulo(Base):
     __tablename__ = "modulo"
     idModulo = Column(Integer, primary_key=True, autoincrement=True)
     nombreModulo = Column(String(50))
     descModulo = Column(String(150))
-    proyecto_id = Column(Integer, ForeignKey("proyecto.idProyecto"))
-    funciones = relationship("Funcion", backref="modulo", lazy=True)
+    proyecto_id = Column(Integer)
+    # funciones = relationship("Funcion", backref="modulo", lazy=True)
 
     @classmethod
     def create(cls, idModulo, nombreModulo, descModulo, proyecto_id):
@@ -56,4 +57,4 @@ class Funcion(Base):
     numCampos = Column(Integer)
     numObjetos = Column(Integer)
     complejidad = Column(String(8))
-    modulo_id = Column(Integer, ForeignKey("modulo.idModulo"))
+    modulo_id = Column(Integer)
