@@ -43,6 +43,43 @@ class Proyecto(Base):
             "descProyecto": self.descProyecto,
         }
 
+    def toJsonWithModules(self):
+        return {
+            "idProyecto": self.idProyecto,
+            "nombreProyecto": self.nombreProyecto,
+            "descProyecto": self.descProyecto,
+            "modulos": [{
+                            "idModulo": m.idModulo,
+                            "nombreModulo": m.nombreModulo,
+                            "descModulo": m.descModulo,
+                            "proyecto_id": m.proyecto_id,
+                        } for m in self.modulos]
+        }
+
+    def toJsonWithModulesAndFunctions(self):
+        return {
+            "idProyecto": self.idProyecto,
+            "nombreProyecto": self.nombreProyecto,
+            "descProyecto": self.descProyecto,
+            "modulos": [
+                {
+                    "idModulo": m.idModulo,
+                    "nombreModulo": m.nombreModulo,
+                    "descModulo": m.descModulo,
+                    "proyecto_id": m.proyecto_id,
+                    "funciones": [
+                        {
+                            "idFuncion": f.idFuncion,
+                            "nombreFuncion": f.nombreFuncion,
+                            "numCampos": f.numCampos,
+                            "numObjetos": f.numObjetos,
+                            "complejidad": f.complejidad,
+                            "modulo_id": f.modulo_id
+                        } for f in m.funciones
+                    ]
+                } for m in self.modulos
+            ]
+        }
 
 class Modulo(Base):
     __tablename__ = "modulo"
