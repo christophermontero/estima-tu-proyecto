@@ -42,6 +42,21 @@ def get_funcion(idFuncion):
     return jsonify({"funcion": funcion.toJson()})
 
 
+@app.route("/funciones/porModulo/<idModule>", methods=["GET"])
+def get_funcion_byModule(idModule):
+
+    m = [function.toJson() for function in Funcion.query.filter_by(modulo_id=idModule).all()]
+
+    return jsonify({"funcion": m})
+
+
+@app.route("/funciones/<idFuncion>", methods=["DELETE"])
+def delete_funcion(idFuncion):
+    function = Funcion.query.filter_by(idFuncion=idFuncion).first()
+
+    confirmation = Funcion.delete(function)
+
+    return jsonify({"modulos": confirmation})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

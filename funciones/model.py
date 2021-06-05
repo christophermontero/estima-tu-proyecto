@@ -78,3 +78,12 @@ class Funcion(Base):
             "complejidad": self.complejidad,
             "modulo_id": self.modulo_id
         }
+
+    def delete(self):
+        try:
+            db_session.delete(self)
+            db_session.commit()
+
+            return True
+        except:
+            return False
