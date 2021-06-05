@@ -23,7 +23,6 @@ class Proyecto(Base):
 
             return self
         except:
-            db_session.rollback()
             return False
 
     def delete(self):
@@ -33,6 +32,7 @@ class Proyecto(Base):
 
             return True
         except:
+            db_session.rollback()
             return False
 
     def toJson(self):
